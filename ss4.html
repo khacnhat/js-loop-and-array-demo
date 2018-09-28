@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .cell {
+            width: 20px;
+            height:20px;
+            background-color: red;
+            margin: 1px;
+            position: absolute;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+        }
+
+    </style>
+</head>
+<body onclick="play(event)">
+    <script>
+        var CELL_WIDTH = 21;
+
+        for(var i = 0; i < 10; i++){
+            for(var j = 0; j < 10; j++){
+                var left = j * CELL_WIDTH;
+                var topPosition = i * CELL_WIDTH;
+                var id = 'cell-'+i+'-'+j;
+                document.write('<div class="cell" id="' +
+                    id+'" style="left: ' +
+                    left + 'px;top: ' +
+                    topPosition + 'px;"></div>')
+            }
+        }
+        
+        function play(event) {
+            var x = Math.floor(event.pageX/CELL_WIDTH);
+            var y = Math.floor(event.pageY/CELL_WIDTH);
+
+            var cell = document.getElementById('cell-' + y + '-' + x);
+            cell.innerHTML = y + ', ' + x;
+        }
+    </script>
+</body>
+</html>
